@@ -30,7 +30,6 @@ Synapse is an AI-powered article summarizer that allows users to input text or U
 │   ├── tokenizer.py
 │   └── train_model.py
 ├── requirements.txt
-├── run.sh
 ├── scripts
 │   └── data_fetcher.py
 └── static
@@ -133,6 +132,10 @@ CSS file for styling the web interface. It ensures the web page is visually appe
 8. Access the Application
 
     Open a web browser and go to http://127.0.0.1:5000
+
+    Here is a screenshot of the user interface:
+
+    ![UI Screenshot](ScreenshotOfUi.png)
 ## Usage
 
 - Input Article Text: Enter the text of the article you want to summarize in the text box.
