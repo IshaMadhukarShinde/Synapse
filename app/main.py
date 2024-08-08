@@ -2,7 +2,7 @@ import sys
 import os
 import logging
 from flask import Flask, render_template, request, jsonify
-from summarizer import summarize_text, fetch_text_from_url
+from .summarizer import summarize_text, fetch_text_from_url
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s: %(message)s')

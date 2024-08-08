@@ -1,14 +1,38 @@
-import requests
-from bs4 import BeautifulSoup
+import torch
 import spacy
+import logging
+from torch.nn.functional import softmax
+from model.train_model import SimpleSummarizer  # Import your model
 
-# Load your NLP model (make sure it's compatible with your summarizer) 
+# Load your NLP model (ensure it's compatible with your summarizer) 
 nlp = spacy.load("en_core_web_sm")
+
+# Load your trained model
+def load_model(model_path, vocab_size):
+    model = SimpleSummarizer(vocab_size=vocab_size, embed_size=128, hidden_size=256)
+    model.load_state_dict(torch.load(model_path))
+    model.eval()
+    return model
+
+# Load vocabulary
+def load_vocab(vocab_file):
+    vocab = {}
+    with open(vocab_file, 'r') as file:
+        for line in file:
+            word, idx = line.strip().split('\t')
+            vocab[word] = int(idx)
+    return vocab
+
+# Initialize model and vocabulary
+vocab_file = "data/vocabulary.txt"
+model_path = "data/model.pth"
+vocab = load_vocab(vocab_file)
+vocab_size = len(vocab) + 1  # +1 for padding index
+model = load_model(model_path, vocab_size)
 
 def summarize_text(text):
     """
-    Summarize the provided text using a simple approach.
-    You can replace this with more advanced logic as needed.
+    Summarize the provided text using the custom-trained model.
     """
     doc = nlp(text)
     sentences = [sent.text for sent in doc.sents]
