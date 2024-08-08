@@ -97,7 +97,7 @@ CSS file for styling the web interface. It ensures the web page is visually appe
 
     ```
     pyenv install 3.10.8
-    pyenv virtualenv 3.12.0 synapse-venv
+    pyenv virtualenv 3.10.8 synapse-venv
     pyenv activate synapse-venv
     ```
     Once you are done with your env deactive it with:
