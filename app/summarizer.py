@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import spacy
 
-# Load your NLP model (make sure it's compatible with your summarizer)
+# Load your NLP model (make sure it's compatible with your summarizer) 
 nlp = spacy.load("en_core_web_sm")
 
 def summarize_text(text):
